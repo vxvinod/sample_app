@@ -1,0 +1,45 @@
+Chapter 6:
+
+Notes
+
+ rails generate model User name:string email:string
+      invoke  active_record
+      create    db/migrate/[timestamp]_create_users.rb
+      create    app/models/user.rb
+      invoke    rspec
+      create      spec/models/user_spec.rb
+
+
+*bundle exec rake db:rollback --- executes drop table command
+* annotate gem is used to create database schema in the model file in comment format.
+
+Console 
+
+User.new
+User.create
+user.destroy
+user.reload
+user.update_attributes
+
+
+
+*bundle exec rake db:test:prepare ---------------- prepare test database
+
+Presence Validation
+The presence: true argument is a one-element options hash; recall from Section 4.3.4 that curly braces are optional when passing hashes as the final argument in a method
+
+validates(:name, presence: true)
+
+user.errors.full_messages----display error in console
+
+validates :name,  presence: true, length: { maximum: 50 }  -----validates length of field
+
+* user_with_same_email = @user.dup
+      user_with_same_email.save	--------------
+The method here is to make a user with the same email address as @user, which we accomplish using @user.dup, which creates a duplicate user with the same attributes. Since we then save that user, the original @user has an email address that already exists in the database, and hence should not be valid.				
+
+*validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+
+
+checks case sensitive also
