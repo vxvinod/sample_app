@@ -43,3 +43,21 @@ The method here is to make a user with the same email address as @user, which we
 
 
 checks case sensitive also
+
+
+*  rails generate migration add_index_to_users_email -----adds migration add_index to users model
+
+
+
+*class AddIndexToUsersEmail < ActiveRecord::Migration
+  def change
+    add_index :users, :email, unique: true
+  end
+end
+This uses a Rails method called add_index to add an index on the email column of the users table. The index by itself doesn’t enforce uniqueness, but the option unique: true does.
+
+
+*if migration fails in 6.22 add these lines
+ add_index "users", ["email"], :name => "index_users_on_email", :unique => true in schema.rb
+ *before_save --method is invloked before save
+
