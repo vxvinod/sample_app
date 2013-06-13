@@ -61,3 +61,6 @@ This uses a Rails method called add_index to add an index on the email column of
  add_index "users", ["email"], :name => "index_users_on_email", :unique => true in schema.rb
  *before_save --method is invloked before save
 
+*password digest
+We’ll use the state-of-the-art hash function called bcrypt to irreversibly encrypt the password to form the password hash. To use bcrypt in the sample application, we need to add the bcrypt-ruby gem to our Gemfile 
+gem 'bcrypt-ruby', '3.0.1'
