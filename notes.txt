@@ -64,3 +64,8 @@ This uses a Rails method called add_index to add an index on the email column of
 *password digest
 We’ll use the state-of-the-art hash function called bcrypt to irreversibly encrypt the password to form the password hash. To use bcrypt in the sample application, we need to add the bcrypt-ruby gem to our Gemfile 
 gem 'bcrypt-ruby', '3.0.1'
+
+
+RSpec’s let method provides a convenient way to create local variables inside tests. The syntax might look a little strange, but its effect is similar to variable assignment. The argument of let is a symbol, and it takes a block whose return value is assigned to a local variable with the symbol’s name. In other words,
+
+let(:found_user) { User.find_by_email(@user.email) }
